@@ -115,6 +115,20 @@ class _PokemonSearchScreenState extends State<PokemonSearchScreen> {
                   )
                   .toList(),
             ),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, // duas imagens por linha
+                mainAxisSpacing: 8,
+                crossAxisSpacing: 8,
+              ),
+              itemCount: pokemon.sprites.allImages.length,
+              itemBuilder: (context, index) {
+                final url = pokemon.sprites.allImages[index];
+                return Image.network(url, fit: BoxFit.contain);
+              },
+            ),
           ],
         ),
       ),
